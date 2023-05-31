@@ -6,7 +6,6 @@ import com.xogito.project.user.management.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -29,7 +27,6 @@ public class UserServiceImpl implements UserService {
     public User findUserById(UUID id) {
         return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User not found with ID: " + id));
     }
-
     @Override
     public User createUser(User user) {
         if (userRepository.existsByEmail(user.getEmail())) {
@@ -54,8 +51,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseEntity<Object> deleteUser(UUID id) {
-
-
         Optional<User> userOptional = userRepository.findById(id);
         if (userOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User does not exist!");
@@ -66,8 +61,6 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CREATED).body(e.getMessage());
         }
-
-
 
     }
 

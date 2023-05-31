@@ -45,7 +45,6 @@ public class ProjectController {
         }
     }
 
-
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateProject(@PathVariable UUID id, @Valid @RequestBody ProjectDTO project) {
         try {
@@ -61,7 +60,7 @@ public class ProjectController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteProject(@PathVariable UUID id) {
-       return projectService.deleteProject(id);
+        return projectService.deleteProject(id);
     }
 
     @GetMapping
@@ -82,7 +81,7 @@ public class ProjectController {
 
     @PostMapping("/{projectId}/users/{userId}")
     public ResponseEntity<Object> assignUserToProject(@PathVariable UUID projectId, @PathVariable UUID userId) {
-        return  projectService.assignUserToProject(projectId, userId);
+        return projectService.assignUserToProject(projectId, userId);
         //return ResponseEntity.status(HttpStatus.CREATED).body(updatedProject);
     }
 

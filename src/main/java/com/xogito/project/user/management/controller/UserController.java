@@ -1,6 +1,6 @@
 package com.xogito.project.user.management.controller;
 
-import com.xogito.project.user.management.model.Project;
+;
 import com.xogito.project.user.management.model.User;
 import com.xogito.project.user.management.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
